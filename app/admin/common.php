@@ -102,3 +102,13 @@ function format_bytes($size, $delimiter = '') {
     for ($i = 0; $size >= 1024 && $i < 5; $i++) $size /= 1024;
     return round($size, 2) . $delimiter . $units[$i];
 }
+
+/**
+ * @param number $level 等级
+ * @param string $name  返回名称
+ */
+
+function level($level){
+    $name=\think\Db::name('level_config')->where('level',$level)->find();
+    return $name['name'];
+}
