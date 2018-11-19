@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>注册新用户</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="__PUBLIC__/layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="__PUBLIC__/font-awesome/css/font-awesome.min.css" media="all" />
+    <link rel="stylesheet" href="__PUBLIC__/bootstrap/css/bootstrap.css" media="all" /> 
+    <link rel="stylesheet" href="__CSS__/publish.css" media="all" /> 
+    <link rel="stylesheet" href="__CSS__/register.css" media="all" /> 
+    <script src="__PUBLIC__/jquery/jquery.min.js"></script>
+</head>
+<body>
+        <!-- 顶部logo图片 -->
+        <div class='top_logo'>
+                <img src="__IMG__/logo.jpg" alt="..." width="100px" height="100px" class="img-circle">
+        </div>
+        <!-- 登录输入框 -->
+        <!-- 用户编号 -->
+        <div class="form-group" >
+            <label for="exampleInputEmail1" id="num">用户编号:</label>
+            <input type="text" class="form-control" id="user_number" placeholder="请输入用户编号">
+        </div>
+        <!-- 昵称 -->
+        <div class="form-group" >
+                <label for="exampleInputEmail1" id="name">昵称:</label>
+                <input type="text" class="form-control" id="user_name" placeholder="请输入昵称">
+        </div>
+        <!-- 一级密码 -->
+        <div class="form-group">
+            <label for="exampleInputPassword1" id="pwd">密码:</label>
+            <input type="password" class="form-control" id="first_password" placeholder="请输入密码">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">确认密码:</label>
+            <input type="password" class="form-control" id="enter_password" placeholder="请输入确认密码">
+        </div>
+        <!-- 推荐人编号 -->
+        <div class="form-group">
+            <label for="exampleInputEmail1" id="refree">推荐人编号:</label>
+            <input type="text" class="form-control" id="refree_name" placeholder="请输入推荐人编号">
+        </div>
+        <!-- 手机号 -->
+        <div class="form-group">
+            <label for="exampleInputEmail1" id="mobile">手机号:</label>
+            <input type="text" class="form-control" id="mobile" placeholder="请输入手机号">
+        </div>
+        <b style="margin-left:44px;">性别:</b>
+        <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked> 男
+        </label>
+        <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 女
+        </label>
+        <br><br>
+
+        <button type="button" class="btn btn-info" id="btn">立即注册</button>
+
+        <div class="register">
+            <p>我有账号:&nbsp;<a href="{:url('index/login/index')}">立即登录</a></p>
+        </div>
+
+</body>
+<script>
+    $('#btn').click(function(){
+        var name=$('#user_name').val();
+        var first_pwd =$('#first_password').val();
+        var second_pwd=$('#enter_password').val();
+        var user_number=$('#user_number').val();
+        var refree_name=$('#refree_name').val();
+        var mobile     =$('#mobile').val();
+        if(user_number==""){
+            $('.alert-this').empty();
+            $('#user_number').after('<p class="alert-this">用户编号不能为空！</p>');
+        }else if(name==""||first_pwd==""){
+            alert('昵称或密码不能为空');
+            location.href=location.href;
+        }else if(name.length<=6){
+            alert('账号最短6个字符！');
+            location.href=location.href;
+        }else if(first_pwd.length<=8||first_pwd.length>=16){
+            alert('密码最短10个字符，最长16个字符！');
+            location.href=location.href;
+        }else if(first_pwd!=second_pwd){
+            alert('两次输入的密码不一致！');
+            location.href=location.href;
+        }else{
+            $.ajax({
+                type: "post",
+                url: "{:url('index/register/register')}",
+                data: {
+                    "user_name":name,
+                    "user_password":first_pwd,
+                    "user_number":user_number,
+                    "refree":refree_name,
+                    "mobile"     :mobile
+                    },
+                dataType: "json",
+                success: function (res) {
+                    if(res.code=='success'){
+                        alert(res.message);
+                        location.href="{:url('index/login/index')}";
+                    }else{
+                        alert(res.message);
+                        location.href=location.href;
+                    }
+                }
+            });
+        }
+        
+    });
+</script>
+</html>
+<!-- @author:Lc.sida with in 2018-11-14 created . -->

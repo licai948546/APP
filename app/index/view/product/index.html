@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>商品详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="__PUBLIC__/layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="__PUBLIC__/font-awesome/css/font-awesome.min.css" media="all" />
+    <link rel="stylesheet" href="__PUBLIC__/bootstrap/css/bootstrap.css" media="all" /> 
+    <link rel="stylesheet" href="__CSS__/publish.css" media="all" /> 
+    <link rel="stylesheet" href="__CSS__/product.css" media="all" /> 
+    <script src="__PUBLIC__/jquery/jquery.min.js"></script>
+</head>
+<body>
+    
+    <div id="go-back">
+            <img src="__IMG__/back.png" class="back-img" /><span class="back">返回</span> 
+    </div>    
+    <hr>
+
+    <div class="row" style="margin-right:0px;margin-left:0px;">
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                
+            <img src="{$info.thumb|geturl}" alt="...">
+            <hr>
+            <div class="caption">
+                <h3>{$info.name}</h3>
+                <h5>{$info.description}</h5>
+                <p class="price">￥{$info.price}</p>
+                <span class="glyphicon glyphicon-plus"></span>
+                <input type="text" name="num" class="num" value="1">
+                <span class="glyphicon glyphicon-minus"></span>
+                <p class='buy-btn'><a href="#" class="btn btn-primary" role="button">加入购物车</a></p>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+{include file="publish/footer"}
+
+<script>
+    // 返回效果
+    $('#go-back').click(function(){
+        history.back();
+    });
+    // 数量加减
+    $('.glyphicon-plus').click(function(){
+        var num=$('.num').val();
+        num=parseInt(num);
+        var add=num+1;
+        $('.num').attr('value',add)
+        
+        
+    });
+    $('.glyphicon-minus').click(function(){
+        var num=$('.num').val();
+        num=parseInt(num);
+        if(num>1){
+            var reduce=num-1;
+            $('.num').attr('value',reduce);
+        }
+        
+    });
+</script>
+</html>

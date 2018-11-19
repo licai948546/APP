@@ -1,0 +1,21 @@
+
+    <br><br><br>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+          <ul class="footer-ul">
+            <li id="home"><span class="glyphicon glyphicon-home"></span> 首页</li>
+            <li id="page1"><span class="glyphicon glyphicon-tag"></span>商品</li>
+            <li id="page2"><span class="glyphicon glyphicon-th-list"></span>更多</li>
+            <li id="user"><span class="glyphicon glyphicon-user"></span>我的</li>
+          </ul>
+        </div>
+      </nav>
+
+      <script>
+      $('#home').click(function (){
+          location.href="{:url('index/index/index')}";
+      });
+      $('#user').click(function (){
+          location.href="{:url('index/user/index')}";
+      });
+      </script>

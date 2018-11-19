@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="__PUBLIC__/layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="__PUBLIC__/font-awesome/css/font-awesome.min.css" media="all" />
+    <link rel="stylesheet" href="__PUBLIC__/bootstrap/css/bootstrap.css" media="all" /> 
+    <link rel="stylesheet" href="__CSS__/publish.css" media="all" /> 
+    <script src="__PUBLIC__/jquery/jquery.min.js"></script>
+</head>
+<body>
+        <!-- 顶部logo图片 -->
+        <div class='top_logo'>
+                <img src="__IMG__/logo.jpg" alt="..." width="100px" height="100px" class="img-circle">
+        </div>
+        <!-- 登录输入框 -->
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="laber">账号：</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入账号">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1" class="laber">密码：</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入密码">
+        </div>
+        <button type="button" class="btn btn-info" id="btn">立即登录</button>
+        
+        <div class="register">
+            <p>还没账号？<a href="{:url('index/register/index')}">立即注册</a></p>
+        </div>
+</body>
+    <script>
+        $('#btn').click(function(){
+            var name=$('#exampleInputEmail1').val();
+            var pwd =$('#exampleInputPassword1').val();
+            if(name==""||pwd==""){
+                alert("账号或密码不能为空！");
+            }else{
+                $.ajax({
+                    type: "post",
+                    url: "{:url('index/login/login')}",
+                    data: {"name":name,"pwd":pwd},
+                    dataType: "json",
+                    success: function (res) {
+                        alert(res.message);
+                        if(res.code=="success"){
+                            location.href="{:url('index/index/index')}";
+                        }else{
+                            location.href=location.href;
+                        }
+                    },
+                    error:function(res){
+                        alert(res.message);
+                    }
+                });
+            }
+        });
+    </script>
+
+</html>

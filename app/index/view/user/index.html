@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>我的</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="__PUBLIC__/layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="__PUBLIC__/font-awesome/css/font-awesome.min.css" media="all" />
+    <link rel="stylesheet" href="__PUBLIC__/bootstrap/css/bootstrap.css" media="all" /> 
+    <link rel="stylesheet" href="__CSS__/publish.css" media="all" /> 
+    <link rel="stylesheet" href="__CSS__/user.css" media="all" /> 
+    <script src="__PUBLIC__/jquery/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $('#user').attr('style','color:rgb(21,158,252,0.9);');
+        });
+    </script>
+</head>
+<body>
+    <!-- 顶部 -->
+    <div class="top-bg">
+        <div class="author-user"><img src="__IMG__/author.png" alt=""></div>
+        <p>会员名:{$member.user_name}</p>
+        <p>推荐人:{$member.refree}</p>
+        <p>大会员:{$member.level}</p>
+        <div class="price">
+            <h2>余额：{$member.price} 元</h2>
+        </div>
+    </div>
+    <!-- 主体 -->
+    <table class="layui-table">
+            <colgroup>
+              <col width="100" >
+              <col width="100" >
+              <col width="100" >
+              <col width="100" >
+              <col>
+            </colgroup>
+            <tbody>
+              <tr>
+                <td>
+                    <a href='#'><div class="td-div glyphicon glyphicon-th-large">
+                    </div>
+                    </a>
+                    <p>你</p>
+                </td>
+                <td>
+                    <div class="td-div glyphicon glyphicon-star">
+                    </div>
+                    <p>我</p>
+                </td>
+                <td>
+                    <div class="td-div glyphicon glyphicon-file">
+                    </div>
+                    <p>他</p>
+                </td>
+                <td>
+                    <div class="td-div glyphicon glyphicon-file">
+                    </div>
+                    <p>你</p>
+                </td>
+              </tr>
+              <tr>
+                    <td>
+                        <div class="td-div glyphicon glyphicon-th-large">
+                        </div>
+                        <p>我</p>
+                    </td>
+                    <td>
+                        <div class="td-div glyphicon glyphicon-star">
+                        </div>
+                        <p>他</p>
+                    </td>
+                    <td>
+                        <div class="td-div glyphicon glyphicon-file">
+                        </div>
+                        <p>aaa</p>
+                    </td>
+                    <td>
+                        <div class="td-div glyphicon glyphicon-file">
+                        </div>
+                        <p>aaa</p>
+                    </td>
+                  </tr>
+                  <tr>
+                        <td>
+                            <div class="td-div glyphicon glyphicon-th-large">
+                            </div>
+                            <p>aaa</p>
+                        </td>
+                        <td>
+                            <div class="td-div glyphicon glyphicon-star">
+                            </div>
+                            <p>aaa</p>
+                        </td>
+                        <td>
+                            <div class="td-div glyphicon glyphicon-file">
+                            </div>
+                            <p>aaa</p>
+                        </td>
+                        <td>
+                            <div class="td-div glyphicon glyphicon-file">
+                            </div>
+                            <p>aaa</p>
+                        </td>
+                      </tr>
+                      
+            </tbody>
+          </table>
+    {include file="publish/footer"}
+</body>
+</html>
