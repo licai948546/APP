@@ -72,6 +72,7 @@
         <col width="100">
         <col width="50">
         <col width="70">
+        <col width="50">
         <col width="100">
       </colgroup>
       <thead>
@@ -86,6 +87,7 @@
           <th>账户余额</th>
           <th>奖金余额</th>
           <th>注册时间</th>
+          <th>审核</th>
           <th>操作</th>
         </tr> 
       </thead>
@@ -108,6 +110,7 @@
           <td>{$vo.price}元</td>
           <td>{$vo.bonus}元</td>
           <td>{$vo.register_time|date="Y-m-d H:i:s",###}</td>
+          <td><a href="javascript:;" style="font-size:18px;" class="status" data-id="{$vo.id}" data-val="{$vo.status}">{eq name="vo.status" value="1"}<i class="fa fa-toggle-on"></i>{else /}<i class="fa fa-toggle-off"></i>{/eq}</a></td>
           <td class="operation-menu">
             <div class="layui-btn-group">
               <a href="{:url('admin/article/publish',['id'=>$vo.id])}" class="layui-btn layui-btn-xs a_menu layui-btn-primary" style="margin-right: 0;font-size:12px;"><i class="layui-icon"></i></a>
