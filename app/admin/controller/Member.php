@@ -3,12 +3,15 @@
  use \think\Db;
 
  class Member extends Permissions
- {
+ {	
+	//  会员列表首页
  	function Index(){
 		$member=Db::name('member')->select();
 		$this->assign('member',$member);
  		return $this->fetch();
 	 }
+
+	//  审核/通过会员
 	function status(){
 		 if($this->request->isPost()){
 			 $post = $this->request->post();
@@ -19,6 +22,8 @@
 			 }
 		 }
 	 }
+
+	//  删除会员
 	function delete(){
 		 if($this->request->isAjax()) {
 			 $id = $this->request->has('id') ? $this->request->param('id', 0, 'intval') : 0;
@@ -30,4 +35,5 @@
 			 }
 		 }
 	 }
+
  }
