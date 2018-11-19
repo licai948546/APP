@@ -128,7 +128,7 @@
       var id = $(this).attr('id');
       layer.confirm('确定要删除?', function(index) {
         $.ajax({
-          url:"{:url('admin/article/delete')}",
+          url:"{:url('admin/member/delete')}",
           data:{id:id},
           success:function(res) {
             layer.msg(res.msg);
@@ -192,7 +192,7 @@
       }
       $.ajax({
         type:"post",
-        url:"{:url('admin/article/status')}",
+        url:"{:url('admin/member/status')}",
         data:{status:status,id:id},
         success:function(res){
           

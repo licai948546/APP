@@ -172,9 +172,4 @@ class Shop extends Permissions
             }
     	}
     }
-    function (){
-        $this->request->isAjax();
-        // index of message with  miub  on the moalin  in the tool s 
-        // Post submit on this formcat with orders install 
-    }
 }
