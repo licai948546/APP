@@ -26,40 +26,35 @@
   <div class="tplay-body-div">
         <div class="layui-tab">
                 <ul class="layui-tab-title">
-                  <li class="layui-this">商品分类管理</li>
-                  <li><a href="{:url('admin/shop/productcate')}" class="a_menu">新增商品分类</a></li>
+                  <li class="layui-this">会员等级管理</li>
+                  <li><a href="{:url('admin/member/leveledit')}" class="a_menu">添加会员等级</a></li>
                 </ul>
               </div> 
-       
+      <hr>
     <table class="layui-table" lay-size="sm">
       <colgroup>
         <col width="50">
         <col width="50">
         <col width="50">
-        <col width="50">
-        <col width="50">
-        <col width="50">
-
+        <col width="70">
       </colgroup>
       <thead>
         <tr>
           <th>ID</th>
-          <th>分类名称</th>
-          <th>标签</th>
-          <th>备注</th>
+          <th>等级</th>
+          <th>名称</th>
           <th>操作</th>
         </tr> 
       </thead>
       <tbody>
-        {volist name="cate" id="vo"}
+        {volist name="level" id="vo"}
         <tr>
           <td>{$vo.id}</td>
+          <td>{$vo.level}</td>
           <td>{$vo.name}</td>
-          <td>{$vo.tag}</td>
-          <td>{$vo.remarks}</td>
           <td class="operation-menu">
             <div class="layui-btn-group">
-              <a href="{:url('admin/shop/productcate',['id'=>$vo.id])}" class="layui-btn layui-btn-xs a_menu layui-btn-primary" style="margin-right: 0;font-size:12px;"><i class="layui-icon"></i></a>
+              <a href="{:url('admin/member/leveledit',['id'=>$vo.id])}" class="layui-btn layui-btn-xs a_menu layui-btn-primary" style="margin-right: 0;font-size:12px;"><i class="layui-icon"></i></a>
               <a href="javascript:;" class="layui-btn layui-btn-xs layui-btn-primary delete" id="{$vo.id}" style="margin-right: 0;font-size:12px;"><i class="layui-icon"></i></a>
             </div>
           </td>
@@ -74,7 +69,7 @@
       var id = $(this).attr('id');
       layer.confirm('确定要删除?', function(index) {
         $.ajax({
-          url:"{:url('admin/article/delete')}",
+          url:"{:url('admin/member/delete')}",
           data:{id:id},
           success:function(res) {
             layer.msg(res.msg);
@@ -138,7 +133,7 @@
       }
       $.ajax({
         type:"post",
-        url:"{:url('admin/article/status')}",
+        url:"{:url('admin/member/status')}",
         data:{status:status,id:id},
         success:function(res){
           
