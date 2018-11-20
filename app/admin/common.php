@@ -104,6 +104,7 @@ function format_bytes($size, $delimiter = '') {
 }
 
 /**
+ * 获取用户等级信息
  * @param number $level 等级
  * @param string $name  返回名称
  */

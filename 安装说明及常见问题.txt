@@ -1,33 +1,4 @@
-﻿## 安装使用
-
-Tplay的安装非常简单：
-					
-1.将你下载的程序包放在服务器环境的根目录下
-
-2.将根目录下的tlay.sql文件导入mysql数据库
-
-3.修改/app/database.php文件中的数据库配置信息
-
-4.将你的域名指向根目录下的public目录（重要）
-
-5.浏览器访问：你的域名/admin   默认管理员账户：admin 密码：tplay
-
-6.如果你用到了短信配置，请前往阿里大鱼官网申请下载自己的sdk文件，替换/extend/dayu下的文件，在后台配置自己的appkey即可
-
-## 常见问题
-
-打不开：
-
-检查自己环境的php版本，要求php>=5.5
-
-路径出现问题：
-
-1.检查自己的域名是不是指向了根目录下的public目录（实在不能指向public目录请看最后）
-
-2.如果你用的环境工具是wamp，请修改/public/.htaccess文件
-
-<IfModule mod_rewrite.c>
-  Options +FollowSymlinks -Multiviews
+﻿Multiviews
   RewriteEngine On
 
   RewriteCond %{REQUEST_FILENAME} !-d

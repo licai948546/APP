@@ -33,6 +33,31 @@
 		return $this->fetch();
 	}
 
+	/**
+	 * 会员信息查看/编辑
+	 */
+
+	function publish(){
+		$id=$this->request->param('id');
+		if($id){
+			$searchFiedls=[
+				'user_name',
+				'mobile',
+				'sex',
+				'refree',
+				'price',
+				'bonus',
+				'register_time',
+				'level',
+				'user_number',
+				'status'
+			];
+			$member=Db::name('member')->field($searchFiedls)->where('id',$id)->find();
+			dump($member);
+		}
+		return $this->fetch();
+	}
+
 	// 会员等级修改操作
 
 	function updateLevel(){
